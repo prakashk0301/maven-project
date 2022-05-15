@@ -1,0 +1,13 @@
+pipeline
+{
+agent any
+{stage ('scm checkout')
+{steps {git branch: 'master', url: 'https://github.com/prakashk0301/maven-project'}
+}
+stage ('code compile')
+{steps {withMaven(globalMavenSettingsConfig: 'e03d907f-d519-42c0-86de-5de103a4e3fa', jdk: 'java-local', maven: 'maven-01', mavenSettingsConfig: 'null')
+}
+{sh 'mvn compile'}
+}
+}
+]
